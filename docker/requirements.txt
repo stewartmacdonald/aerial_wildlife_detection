@@ -11,4 +11,6 @@ requests
 future
 
 # for the AI backend
-celery[redis,auth,msgpack]==4.4.7  #TODO
+# Edited to fixed Python module incompatibility
+celery[redis,auth,msgpack]==4.4.7
+kombu==4.6.11 
