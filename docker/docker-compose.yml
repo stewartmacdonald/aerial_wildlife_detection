@@ -1,9 +1,17 @@
 version: '3.7'
+
 volumes:
   aide_db_data:
     name: aide_db_data
   aide_images:
     name: aide_images
+  camera_images:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/smacdonald/docker/cameratrapping/data/images/
+
 services:
   aide_app:
     hostname: 'aide_app_host' 
@@ -15,5 +23,6 @@ services:
       - aide_db_data:/var/lib/postgresql/10/main
       - aide_images:/home/aide/images
       - ..:/home/aide/app:cached
+      - camera_images:/home/aide/camera_images
     ports:
       - '8080:8080'
